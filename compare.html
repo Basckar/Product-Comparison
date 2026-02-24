@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقایسه محصولات</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="nav-link"> خانه</a>
+            <a href="products.html" class="nav-link"> محصولات</a>
+            <a href="compare.html" class="nav-link active"> مقایسه</a>
+            <span class="nav-badge" id="navCompareCount">۰/۴</span>
+        </nav>
+
+        <!-- اینجا جدول مقایسه نمایش داده میشه -->
+        <div id="comparisonContainer" class="comparison-container"></div>
+    </div>
+
+    <script src="data/mockData.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="utils/comparison.js"></script>
+    <script src="pages/compare.js"></script>
+</body>
+</html>

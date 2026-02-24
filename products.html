@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست محصولات</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="nav-link"> خانه</a>
+            <a href="products.html" class="nav-link active"> محصولات</a>
+            <a href="compare.html" class="nav-link"> مقایسه</a>
+            <span class="nav-badge" id="navCompareCount">۰/۴</span>
+        </nav>
+
+        <h1>  لیست محصولات</h1>
+        
+        <!-- باکس جستجو با دکمه -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="جستجو در محصولات..." class="search-input">
+                <button id="searchBtn" class="search-btn">  جستجو</button>
+            </div>
+        </div>
+
+        <!-- لیست محصولات -->
+        <ul id="productList" class="product-grid"></ul>
+    </div>
+
+    <!-- دکمه شناور -->
+    <div id="floatCompareBtn" class="float-button hidden">
+        <span class="float-count" id="floatCount">۰</span>
+        <span class="float-text">مشاهده مقایسه</span> 
+    </div>
+
+    <script src="data/mockData.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="pages/products.js"></script>
+</body>
+</html>

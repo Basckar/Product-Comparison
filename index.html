@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقایسه‌گر محصولات | صفحه اصلی</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1> مقایسه‌گر حرفه‌ای محصولات</h1>
+            <p>بیش از ۱۲۰ محصول - هوشمندانه انتخاب کنید</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="stats-card">
+                <h3> محصولات</h3>
+                <div class="stat-number" id="totalProducts">۱۲۰</div>
+                <a href="products.html" class="btn primary">مشاهده محصولات</a>
+            </div>
+
+            <div class="stats-card">
+                <h3> مقایسه</h3>
+                <div class="stat-number" id="compareCount">۰/۴</div>
+                <a href="compare.html" class="btn success">رفتن به مقایسه</a>
+            </div>
+
+            <div class="stats-card">
+                <h3> ویژگی‌ها</h3>
+                <ul class="feature-list">
+                    <li> جستجوی سریع</li>
+                    <li> مقایسه ۴ محصول</li>
+                    <li> هایلایت تفاوت‌ها</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/mockData.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="pages/home.js"></script>
+</body>
+</html>
