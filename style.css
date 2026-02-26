@@ -1,4 +1,4 @@
-/* ===== استایل اصلی پروژه مقایسه‌گر محصولات ===== */
+/*   استایل اصلی پروژه مقایسه‌گر محصولات   */
 * {
   margin: 0;
   padding: 0;
@@ -13,11 +13,11 @@ body {
 
 .container {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: auto auto;
   padding: 20px;
 }
 
-/* ===== انیمیشن‌های عمومی ===== */
+/*   انیمیشن‌های عمومی   */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -42,7 +42,7 @@ body {
   50% { transform: translateX(-10px); }
 }
 
-/* ===== ناوبری ===== */
+/*   ناوبری   */
 .navbar {
   background: white;
   padding: 15px 25px;
@@ -79,7 +79,7 @@ body {
   margin-right: auto;
 }
 
-/* ===== دکمه‌ها ===== */
+/*   دکمه‌ها   */
 .btn {
   display: inline-block;
   padding: 12px 25px;
@@ -100,7 +100,7 @@ body {
 .btn.danger { background: #e74c3c; color: white; }
 .btn.danger:hover { background: #c0392b; }
 
-/* ===== صفحه اصلی (داشبورد) ===== */
+/*   صفحه اصلی (داشبورد)   */
 .hero {
   text-align: center;
   padding: 60px 20px;
@@ -117,7 +117,7 @@ body {
 
 .dashboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: auto;
   gap: 30px;
 }
 
@@ -147,7 +147,7 @@ body {
   color: #7f8c8d;
 }
 
-/* ===== صفحه محصولات ===== */
+/*   صفحه محصولات   */
 .search-section {
   margin-bottom: 30px;
   position: relative;
@@ -285,7 +285,7 @@ body {
   cursor: not-allowed;
 }
 
-/* ===== دکمه شناور ===== */
+/*   دکمه شناور   */
 .float-button {
   position: fixed;
   bottom: 30px;
@@ -340,7 +340,7 @@ body {
   animation: pulse 0.5s ease;
 }
 
-/* ===== لودر سراسری ===== */
+/*   لودر سراسری   */
 .global-loader {
   position: fixed;
   top: 0;
@@ -389,7 +389,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== نوتیفیکیشن ===== */
+/*   نوتیفیکیشن   */
 .custom-toast {
   position: fixed;
   top: 20px;
@@ -412,7 +412,7 @@ body {
   animation: fadeOut 0.3s ease forwards;
 }
 
-/* ===== صفحه مقایسه ===== */
+/*   صفحه مقایسه   */
 .comparison-header {
   display: flex;
   justify-content: space-between;
@@ -536,7 +536,7 @@ body {
   text-align: center;
 }
 
-/* ===== ریسپانسیو ===== */
+/*   ریسپانسیو   */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;

@@ -1,48 +1,32 @@
 // utils/storage.js
+export const STORAGE_KEY = "selectedItems";
+export const MAX_ITEMS = 4;
 
-const AppStorage = {
-  selectedItems: new Set(),
+class AppStorageClass {
+  constructor() {
+    this.selectedItems = new Set();
+    this.loadFromStorage();
+  }
 
-  addItem(id) {
-    if (this.selectedItems.size >= 4) {
-      this.showNotification("حداکثر ۴ آیتم می‌توانید انتخاب کنید", "error");
-      return false;
+  loadFromStorage() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const ids = JSON.parse(saved);
+        this.selectedItems = new Set(ids.slice(0, MAX_ITEMS));
+      }
+    } catch (e) {
+      console.warn("خطا در بازیابی:", e);
     }
+  }
 
-    if (this.selectedItems.has(id)) {
-      return false;
+  persistToStorage() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.getSelectedIds()));
+    } catch (e) {
+      console.warn("خطا در ذخیره‌سازی:", e);
     }
-
-    this.selectedItems.add(id);
-    this.persistToStorage();
-    this.notify();
-    this.showNotification("محصول با موفقیت اضافه شد", "success");
-    return true;
-  },
-
-  removeItem(id) {
-    if (this.selectedItems.delete(id)) {
-      this.persistToStorage();
-      this.notify();
-      this.showNotification("محصول از مقایسه حذف شد", "info");
-    }
-  },
-
-  isSelected(id) {
-    return this.selectedItems.has(id);
-  },
-
-  getSelectedIds() {
-    return Array.from(this.selectedItems);
-  },
-
-  getCount() {
-    return this.selectedItems.size;
-  },
-
-  canAddMore() {
-    return this.selectedItems.size < 4;
-  },
+  }
 
   notify() {
     window.dispatchEvent(
@@ -54,50 +38,44 @@ const AppStorage = {
         },
       }),
     );
-  },
+  }
 
-  persistToStorage() {
-    try {
-      localStorage.setItem(
-        "selectedItems",
-        JSON.stringify(this.getSelectedIds()),
-      );
-    } catch (e) {
-      console.warn("خطا در ذخیره‌سازی:", e);
+  addItem(id) {
+    if (this.selectedItems.size >= MAX_ITEMS) return false;
+    if (this.selectedItems.has(id)) return false;
+
+    this.selectedItems.add(id);
+    this.persistToStorage();
+    this.notify();
+    return true;
+  }
+
+  removeItem(id) {
+    if (this.selectedItems.delete(id)) {
+      this.persistToStorage();
+      this.notify();
+      return true;
     }
-  },
+    return false;
+  }
 
-  loadFromStorage() {
-    try {
-      const saved = localStorage.getItem("selectedItems");
-      if (saved) {
-        const ids = JSON.parse(saved);
-        this.selectedItems = new Set(ids.slice(0, 4));
-      }
-    } catch (e) {
-      console.warn("خطا در بازیابی:", e);
-    }
-  },
+  getSelectedIds() {
+    return Array.from(this.selectedItems);
+  }
 
-  showNotification(message, type = "info") {
-    // حذف نوتیفیکیشن قبلی
-    const oldToast = document.querySelector(".custom-toast");
-    if (oldToast) oldToast.remove();
+  getCount() {
+    return this.selectedItems.size;
+  }
 
-    const toast = document.createElement("div");
-    toast.className = `custom-toast ${type}`;
-    toast.textContent = message;
+  canAddMore() {
+    return this.selectedItems.size < MAX_ITEMS;
+  }
 
-    document.body.appendChild(toast);
+  clearAll() {
+    this.selectedItems.clear();
+    this.persistToStorage();
+    this.notify();
+  }
+}
 
-    setTimeout(() => {
-      toast.classList.add("fade-out");
-      setTimeout(() => toast.remove(), 300);
-    }, 2500);
-  },
-};
-
-// بارگذاری از localStorage
-AppStorage.loadFromStorage();
-
-window.AppStorage = AppStorage;
+export const AppStorage = new AppStorageClass();
